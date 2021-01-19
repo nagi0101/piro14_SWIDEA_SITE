@@ -1,4 +1,5 @@
 from django.db import models
+from django.shortcuts import reverse
 
 
 class Idea(models.Model):
@@ -12,8 +13,8 @@ class Idea(models.Model):
     )
 
     class Meta:
-        verbose_name = _("Idea")
-        verbose_name_plural = _("Ideas")
+        verbose_name = "Idea"
+        verbose_name_plural = "Ideas"
 
     def __str__(self):
         return self.title

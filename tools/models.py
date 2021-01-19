@@ -1,4 +1,5 @@
 from django.db import models
+from django.shortcuts import reverse
 
 
 class Tool(models.Model):
@@ -7,8 +8,8 @@ class Tool(models.Model):
     description = models.TextField()
 
     class Meta:
-        verbose_name = _("Tool")
-        verbose_name_plural = _("Tools")
+        verbose_name = "Tool"
+        verbose_name_plural = "Tools"
 
     def __str__(self):
         return self.name
