@@ -1,1 +1,30 @@
 {% extends 'ideas/layout.html' %}
+
+{% block content %}
+    <h1>Idea Detail</h1>
+    <div class="">  
+        <img src="{{idea.image.url}}" alt="Idea image">
+        <div class="">
+            <h2>{{idea.title}}</h2>
+            <ol style="list-style-type: decimical">
+                <li>
+                    <h4>아이디어 관심도 : </h4>
+                    {{idea.interest}}
+                </li>
+                <li>
+                    <h4>예상 개발 툴 : </h4>
+                    {{idea.devtool.name}}   
+                </li>
+                <li>
+                    <h4>아이디어 설명 : </h4>
+                    {{idea.content}}
+                </li>
+            </ol>
+            <a href="{% url "ideas:idea_delete" idea.pk %}">삭제</a>
+            <a href="{% url "ideas:idea_list" %}">목록</a>
+            <a href="{% url "ideas:idea_update" idea.pk %}">수정</a>
+
+
+        </div>
+    </div>
+{% endblock content %}
