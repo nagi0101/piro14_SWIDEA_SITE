@@ -8,7 +8,7 @@ class Idea(models.Model):
     title = models.CharField(max_length=50)
     image = models.ImageField(upload_to=uuid_name_upload_to)
     content = models.TextField()
-    interest = models.IntegerField(default=0)
+    interest = models.PositiveIntegerField(default=0)
     devtool = models.ForeignKey(
         "tools.Tool", on_delete=models.CASCADE, related_name="ideas"
     )

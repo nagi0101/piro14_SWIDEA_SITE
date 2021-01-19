@@ -3,13 +3,42 @@
 {% block content %}
     <h1>Idea List</h1>
     <ul>
-    {% for idea in object_list %}
+    {% for idea in posts %}
         <li>
             <img src="{{idea.image.url}}" alt="Idea image">
             <h3><a href="{{idea.get_absolute_url}}">{{idea.title}}</a></h3>
             <h4>예상 개발 툴 : {{idea.devtool.name}}</h4>
-            <h4>아이디어 관심도 : {{idea.interest}}</h4>
+            <h4 class="idea-interest_{{idea.pk}}">아이디어 관심도 : {{idea.interest}}</h4>
+            <div class="">
+                <button class="interest-btn like" name={{idea.pk}}>🔺</button>
+                <button class="interest-btn" name={{idea.pk}}>🔻</button>
+            </div>
         </li>
     {% endfor %}
     </ul>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript">
+        $(".interest-btn").click(function(){
+            let plus = 0
+            if ($(this).hasClass("like")){
+                plus = 1
+            }
+            else{
+                plus = -1
+            }
+            let pk = $(this).attr('name')
+            $.ajax({
+                type: "POST",
+                url: "{% url "ideas:idea_list" %}",
+                data: {"pk":pk, "csrfmiddlewaretoken": "{{ csrf_token }}", "plus": plus,},
+                dataType: "json",
+                success: function(response){
+                    let change = $(".idea-interest_+"+pk)
+                    $(".idea-interest_"+pk).html("아이디어 관심도 : "+response.idea_interest);
+
+                }
+            })
+        })
+    </script>
 {% endblock content %}
