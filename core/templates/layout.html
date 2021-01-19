@@ -10,9 +10,9 @@
         <span>My SW Idea Manage</span>
         <ul>
             <li><a href="{% url "ideas:idea_create" %}">아이디어 등록</a></li>
-            <li><a href="">아이디어 관리</a></li>
-            <li><a href="">개발툴 등록</a></li>
-            <li><a href="">개발툴 관리</a></li>
+            <li><a href="{% url "ideas:idea_list" %}">아이디어 관리</a></li>
+            <li><a href="{% url "tools:tool_create" %}">개발툴 등록</a></li>
+            <li><a href="{% url "tools:tool_list" %}">개발툴 관리</a></li>
         </ul>
     </nav>
     {% block content %}

@@ -9,7 +9,9 @@ class Idea(models.Model):
     image = models.ImageField(upload_to=uuid_name_upload_to)
     content = models.TextField()
     interest = models.IntegerField(default=0)
-    devtool = models.ForeignKey("tools.Tool", on_delete=models.CASCADE)
+    devtool = models.ForeignKey(
+        "tools.Tool", on_delete=models.CASCADE, related_name="ideas"
+    )
 
     def __str__(self):
         return self.title

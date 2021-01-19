@@ -1,0 +1,30 @@
+{% extends 'tools/layout.html' %}
+
+{% block content %}
+    <h1>Tool Detail</h1>
+    <div class="">  
+        <div class="">
+            <h2>{{tool.name}}</h2>
+            <div class="">
+                <h4>{{tool.kind}}</h4>
+                <p>{{tool.description}}</p>
+            </div>
+            <hr>
+            <div class="">
+                <h3>만들 수 있는 SW 목록</h3>
+                <ul>
+                    {% for idea in tool.ideas.all %}
+                        <li>{{idea}}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            
+            <a href="{% url "tools:tool_delete" tool.pk %}">삭제</a>
+            <a href="{% url "tools:tool_list" %}">목록</a>
+            <a href="{% url "tools:tool_update" tool.pk %}">수정</a>
+
+
+        </div>
+    </div>
+{% endblock content %}
