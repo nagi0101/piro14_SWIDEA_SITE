@@ -1,16 +1,15 @@
 from django.db import models
 from django.shortcuts import reverse
+from config.utils import uuid_name_upload_to
 
 
 class Idea(models.Model):
 
     title = models.CharField(max_length=50)
-    image = models.ImageField(upload_to=None)
+    image = models.ImageField(upload_to=uuid_name_upload_to)
     content = models.TextField()
     interest = models.IntegerField(default=0)
-    devtool = models.ForeignKey(
-        "tools.Tool", verbose_name="ideas", on_delete=models.CASCADE
-    )
+    devtool = models.ForeignKey("tools.Tool", on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = "Idea"
