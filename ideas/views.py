@@ -12,3 +12,11 @@ def idea_detail(request, pk):
         "pk": pk,
     }
     return render(request, "ideas/idea_detail.html", ctx)
+
+
+def idea_create(request, pk):
+    pass
+
+
+def idea_update(request, pk):
+    pass
